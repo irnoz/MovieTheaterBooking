@@ -68,8 +68,7 @@ namespace MovieTheaterBooking.Controllers
             return RedirectToAction("Index");
         }
     }
-
-    // ViewModel to pass data to the view
+    
     public class BookingViewModel
     {
         public List<string> Board { get; set; } = new List<string>();

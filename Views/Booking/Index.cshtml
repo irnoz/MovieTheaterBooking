@@ -7,10 +7,8 @@ ViewData["Title"] = "Movie Theater Booking";
 
 <h1 class="text-center mb-4">Movie Theater Booking</h1>
 
-<!-- Initialization Section -->
 <div class="card mb-4">
     <div class="card-body">
-        <!-- Initialization Form -->
         <form asp-action="Init" method="post">
             <div class="row align-items-end justify-content-center">
                 <div class="col-md-3 mb-3">
@@ -26,10 +24,8 @@ ViewData["Title"] = "Movie Theater Booking";
                 </div>
             </div>
         </form>
-        <!-- Orange Separator -->
         <hr class="orange-separator" />
-
-        <!-- Booking Form -->
+        
         <form asp-action="CreateBooking" method="post">
             <div class="row align-items-end justify-content-center">
                 <div class="col-md-3 mb-3">
@@ -48,7 +44,6 @@ ViewData["Title"] = "Movie Theater Booking";
     </div>
 </div>
 
-<!-- Seating Arrangement -->
 <div class="card mb-4">
     <div class="card-body">
         <h5 class="text-center mb-3">Seating Arrangement:</h5>
@@ -75,7 +70,6 @@ ViewData["Title"] = "Movie Theater Booking";
     </div>
 </div>
 
-<!-- Current Bookings -->
 <div class="card mb-4">
     <div class="card-body">
         <h5 class="text-center mb-3">Current Bookings:</h5>

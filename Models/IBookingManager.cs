@@ -9,6 +9,6 @@ namespace MovieTheaterBooking.Models
         Result CreateBooking(int k, BookingRequestType type);
         Result DeleteBooking(string bookingNumber);
         List<string> GetBoard();
-        List<string> GetCurrentBookings(); // Added for view
+        List<string> GetCurrentBookings();
     }
 }

@@ -6,16 +6,13 @@ using MovieTheaterBooking.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews()
-    .AddRazorRuntimeCompilation(); // Enable runtime compilation
+    .AddRazorRuntimeCompilation();
 
-// Register BookingManager as a Singleton
 builder.Services.AddSingleton<IBookingManager, BookingManager>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Booking/Error");
