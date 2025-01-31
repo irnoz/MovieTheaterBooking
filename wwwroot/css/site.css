@@ -1,6 +1,5 @@
 /* wwwroot/css/site.css */
 
-/* Orange separator line */
 .orange-separator {
   border: 0;
   height: 2px;
@@ -8,31 +7,50 @@
   margin: 20px 0;
 }
 
-/* Seating Table Styles */
 .seating-table {
   width: auto;
   table-layout: fixed;
 }
 
 .seating-table td {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   vertical-align: middle;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: default;
   border: 1px solid #dee2e6;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   user-select: none;
-  border-radius: 5px;
+  border-radius: 0; 
+  transition: transform 0.2s, background-color 0.2s;
 }
 
-.free-seat {
-  background-color: #d4edda; /* Light green */
-  color: green;
+.seating-table td.free-seat {
+  background-color: rgba(40, 167, 69, 0.8);
+  color: white;
 }
 
-.occupied-seat {
-  background-color: #f8d7da; /* Light red */
-  color: red;
+.seating-table td.occupied-seat {
+  background-color: rgba(220, 53, 69, 0.8);
+  color: white;
+}
+
+.seating-table td.free-seat:hover {
+  transform: scale(1.05); 
+  background-color: rgba(40, 167, 69, 1);
+}
+
+.seating-table td.occupied-seat:hover {
+  transform: scale(1.02);
+  background-color: rgba(220, 53, 69, 1);
+}
+
+@media (max-width: 768px) {
+  .seating-table td {
+    height: 40px;
+    width: 40px;
+    font-size: 1rem;
+    line-height: 40px;
+  }
 }

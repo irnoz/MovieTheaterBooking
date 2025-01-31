@@ -1,8 +1,7 @@
-﻿<!-- Views/Booking/Index.cshtml -->
-@model MovieTheaterBooking.Controllers.BookingViewModel
+﻿@model MovieTheaterBooking.Controllers.BookingViewModel
 
 @{
-ViewData["Title"] = "Movie Theater Booking";
+    ViewData["Title"] = "Movie Theater Booking";
 }
 
 <h1 class="text-center mb-4">Movie Theater Booking</h1>
@@ -10,16 +9,16 @@ ViewData["Title"] = "Movie Theater Booking";
 <div class="card mb-4">
     <div class="card-body">
         <form asp-action="Init" method="post">
-            <div class="row align-items-end justify-content-center">
-                <div class="col-md-3 mb-3">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
                     <label for="rowsCount" class="form-label">Rows:</label>
                     <input type="number" class="form-control" id="rowsCount" name="rowsCount" min="1" required />
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-3">
                     <label for="columnsCount" class="form-label">Columns:</label>
                     <input type="number" class="form-control" id="columnsCount" name="columnsCount" min="1" required />
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary w-100">Init</button>
                 </div>
             </div>
@@ -27,17 +26,16 @@ ViewData["Title"] = "Movie Theater Booking";
         <hr class="orange-separator" />
         
         <form asp-action="CreateBooking" method="post">
-            <div class="row align-items-end justify-content-center">
-                <div class="col-md-3 mb-3">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
                     <label for="seatsCount" class="form-label">Seats Count:</label>
                     <input type="number" class="form-control" id="seatsCount" name="seatsCount" min="1" required />
                 </div>
-                <div class="col-md-3 mb-3 d-flex justify-content-between">
-                    <button type="submit" name="bookingType" value="Scatter" class="btn btn-secondary w-48">Scatter</button>
-                    <button type="submit" name="bookingType" value="Gather" class="btn btn-success w-48">Gather</button>
+                <div class="col-md-3 d-flex">
+                    <button type="submit" name="bookingType" value="Scatter" class="btn btn-secondary me-2 flex-grow-1">Scatter</button>
+                    <button type="submit" name="bookingType" value="Gather" class="btn btn-success flex-grow-1">Gather</button>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <!-- Empty column for alignment -->
+                <div class="col-md-3">
                 </div>
             </div>
         </form>
@@ -51,19 +49,19 @@ ViewData["Title"] = "Movie Theater Booking";
             <table class="table table-bordered seating-table">
                 @foreach (var row in Model.Board)
                 {
-                <tr>
-                    @foreach (var seat in row.Split(' '))
-                    {
-                    if (seat == "O")
-                    {
-                    <td class="text-center free-seat">O</td>
-                    }
-                    else
-                    {
-                    <td class="text-center occupied-seat">X</td>
-                    }
-                    }
-                </tr>
+                    <tr>
+                        @foreach (var seat in row.Split(' '))
+                        {
+                            if (seat == "O")
+                            {
+                                <td class="free-seat" aria-label="Available Seat" title="Available">O</td>
+                            }
+                            else
+                            {
+                                <td class="occupied-seat" aria-label="Occupied Seat" title="Occupied">X</td>
+                            }
+                        }
+                    </tr>
                 }
             </table>
         </div>
@@ -75,22 +73,22 @@ ViewData["Title"] = "Movie Theater Booking";
         <h5 class="text-center mb-3">Current Bookings:</h5>
         @if (Model.CurrentBookings.Any())
         {
-        <ul class="list-group">
-            @foreach (var booking in Model.CurrentBookings)
-            {
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                @booking
-                <form asp-action="CancelBooking" method="post" style="margin:0;">
-                    <input type="hidden" name="bookingNumber" value="@booking.Replace("Booking #", "")" />
-                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
-                </form>
-            </li>
-            }
-        </ul>
+            <ul class="list-group">
+                @foreach (var booking in Model.CurrentBookings)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        @booking
+                        <form asp-action="CancelBooking" method="post" class="mb-0">
+                            <input type="hidden" name="bookingNumber" value="@booking.Replace("Booking #", "")" />
+                            <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                        </form>
+                    </li>
+                }
+            </ul>
         }
         else
         {
-        <p class="text-center">No current bookings.</p>
+            <p class="text-center">No current bookings.</p>
         }
     </div>
 </div>

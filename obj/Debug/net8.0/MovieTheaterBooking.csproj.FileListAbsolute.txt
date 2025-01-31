@@ -365,3 +365,4 @@
 /Users/noza/iliauni/aspNet/MovieTheaterBooking/MovieTheaterBooking/obj/Debug/net8.0/MovieTheaterBooking.csproj.AssemblyReference.cache
 /Users/noza/iliauni/aspNet/MovieTheaterBooking/MovieTheaterBooking/obj/Debug/net8.0/MovieTheaterBooking.MvcApplicationPartsAssemblyInfo.cs
 /Users/noza/iliauni/aspNet/MovieTheaterBooking/MovieTheaterBooking/obj/Debug/net8.0/MovieThe.5989691E.Up2Date
+/Users/noza/iliauni/aspNet/MovieTheaterBooking/MovieTheaterBooking/obj/Debug/net8.0/MovieTheaterBooking.sourcelink.json
