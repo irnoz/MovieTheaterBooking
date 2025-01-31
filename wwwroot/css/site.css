@@ -1,0 +1,38 @@
+/* wwwroot/css/site.css */
+
+/* Orange separator line */
+.orange-separator {
+  border: 0;
+  height: 2px;
+  background-color: orange;
+  margin: 20px 0;
+}
+
+/* Seating Table Styles */
+.seating-table {
+  width: auto;
+  table-layout: fixed;
+}
+
+.seating-table td {
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  cursor: default;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  line-height: 50px;
+  user-select: none;
+  border-radius: 5px;
+}
+
+.free-seat {
+  background-color: #d4edda; /* Light green */
+  color: green;
+}
+
+.occupied-seat {
+  background-color: #f8d7da; /* Light red */
+  color: red;
+}

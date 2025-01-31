@@ -1,0 +1,102 @@
+﻿<!-- Views/Booking/Index.cshtml -->
+@model MovieTheaterBooking.Controllers.BookingViewModel
+
+@{
+ViewData["Title"] = "Movie Theater Booking";
+}
+
+<h1 class="text-center mb-4">Movie Theater Booking</h1>
+
+<!-- Initialization Section -->
+<div class="card mb-4">
+    <div class="card-body">
+        <!-- Initialization Form -->
+        <form asp-action="Init" method="post">
+            <div class="row align-items-end justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <label for="rowsCount" class="form-label">Rows:</label>
+                    <input type="number" class="form-control" id="rowsCount" name="rowsCount" min="1" required />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="columnsCount" class="form-label">Columns:</label>
+                    <input type="number" class="form-control" id="columnsCount" name="columnsCount" min="1" required />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Init</button>
+                </div>
+            </div>
+        </form>
+        <!-- Orange Separator -->
+        <hr class="orange-separator" />
+
+        <!-- Booking Form -->
+        <form asp-action="CreateBooking" method="post">
+            <div class="row align-items-end justify-content-center">
+                <div class="col-md-3 mb-3">
+                    <label for="seatsCount" class="form-label">Seats Count:</label>
+                    <input type="number" class="form-control" id="seatsCount" name="seatsCount" min="1" required />
+                </div>
+                <div class="col-md-3 mb-3 d-flex justify-content-between">
+                    <button type="submit" name="bookingType" value="Scatter" class="btn btn-secondary w-48">Scatter</button>
+                    <button type="submit" name="bookingType" value="Gather" class="btn btn-success w-48">Gather</button>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <!-- Empty column for alignment -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Seating Arrangement -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="text-center mb-3">Seating Arrangement:</h5>
+        <div class="d-flex justify-content-center">
+            <table class="table table-bordered seating-table">
+                @foreach (var row in Model.Board)
+                {
+                <tr>
+                    @foreach (var seat in row.Split(' '))
+                    {
+                    if (seat == "O")
+                    {
+                    <td class="text-center free-seat">O</td>
+                    }
+                    else
+                    {
+                    <td class="text-center occupied-seat">X</td>
+                    }
+                    }
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Current Bookings -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="text-center mb-3">Current Bookings:</h5>
+        @if (Model.CurrentBookings.Any())
+        {
+        <ul class="list-group">
+            @foreach (var booking in Model.CurrentBookings)
+            {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @booking
+                <form asp-action="CancelBooking" method="post" style="margin:0;">
+                    <input type="hidden" name="bookingNumber" value="@booking.Replace("Booking #", "")" />
+                    <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                </form>
+            </li>
+            }
+        </ul>
+        }
+        else
+        {
+        <p class="text-center">No current bookings.</p>
+        }
+    </div>
+</div>
